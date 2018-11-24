@@ -19,10 +19,12 @@ type
 
 var
   Form1: TForm1;
-  t : integer;
-  directie: boolean = true;
+  tBanda1, tBanda2, tBanda3, tBanda4, tBanda5 : integer;
+  tCoborareUmplere, tAsteptareUmplere, tRidicareUmplere,
+  tCoborareInchidere, tAsteptareInchidere, tRidicareInchidere, tMiscareInchidereStanga, tMiscareInchidereDreapta,
+  tAsteptareAmbalare : integer;
 
-  //Parametri variabili x, y
+  //Parametri variabili x, y brat robotic antropomorfic
   x0_1, y0_1, x0_2, y0_2, x0_3, y0_3,
   x1_1, y1_1, x1_2, x1_3, y1_3,
   x2_1, y2_1, x2_2, y2_2, x2_3, y2_3,
@@ -30,7 +32,21 @@ var
   xp2_1, yp2_1, xp2_2, yp2_2,
   xp3_1, yp3_1, xp3_2, yp3_2: integer;
 
-  //Parametri brat robotic R1
+  {Parametri animatie}
+  i : integer;
+  etapa : integer = 0;
+
+  //Parametri roboti
+  movBanda1 : integer = 0;
+  movBanda2 : integer = 0;
+  movBanda3 : integer = 0;
+  movBanda4 : integer = 0;
+  movBanda5 : integer = 0;
+  movRobotUmplere : integer = 0;
+  movRobotInchidereX : integer = 0;
+  movRobotInchidereY : integer = 0;
+
+  //Parametri brat robotic antropomorfic
   movArticulatieUnuR1 : integer = 0;
   movArticulatieDoiR1 : integer = 0;
   movArticulatieTreiR1 : integer = 0;
@@ -38,8 +54,6 @@ var
   movArtivulatieClemePR1 : integer = 0;
 
 const
-  dmax = 30;
-  
   r1 = 18;
   rp = 10;
   rd = 5;
@@ -59,11 +73,16 @@ implementation
                   Brush.Color := rgb(255, 255, 0);
                   Polygon([Point(980,600), Point(1000,600), Point(1420,180), Point(1400,180)]);
                   Polygon([Point(900,610), Point(880,620), Point(380,620), Point(400,610)]);
+                  Polygon([Point(240,540), Point(260,530), Point(80,530), Point(60,540)]);
 
 
                   {Perete - decor}
                   Brush.Color := rgb(102, 178, 255);
                   Polygon([Point(0,180), Point(1280,180), Point(1280,0), Point(0,0)]);
+
+
+                  {Nume - Prenume - Grupa}
+                  TextOut(30, 50, 'Serban Bogdan-Ionut - Grupa 4463');
 
 
                   {Depozit bidoane}
@@ -96,6 +115,18 @@ implementation
                   Brush.Color := rgb(0, 0, 0);
                   ellipse(390, 280, 400, 290);
                   Brush.Color := rgb(255, 255, 255);
+
+
+                  {Animatie - conveior 1}
+                  for i := 0 to 10 do
+                    begin
+                        begin
+                          moveto(250 + i * 30 + movBanda1, 240);
+                          lineto(210 + i * 30 + movBanda1, 280);
+                        if movBanda1 = 30 then
+                          movBanda1 := 0;
+                        end;
+                  end;
 
 
                   {Statie umplere}
@@ -138,68 +169,68 @@ implementation
 
                   //Suprafata frontala
                   Brush.Color := rgb(63, 54, 74);
-                  Polygon([Point(470,160), Point(470,180), Point(490,180), Point(490,160)]);
+                  Polygon([Point(470,160), Point(470,180 + movRobotUmplere), Point(490,180 + movRobotUmplere), Point(490,160)]);
 
                   //Suprafata laterala
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(490,180), Point(490,160), Point(495,160), Point(495,170)]);
+                  Polygon([Point(490,180 + movRobotUmplere), Point(490,160), Point(495,160), Point(495,170 + movRobotUmplere)]);
 
                   //Dozator
                   Brush.Color := rgb(255, 178, 102);
-                  Polygon([Point(475,180), Point(475,190), Point(485,190), Point(485,180)]);
+                  Polygon([Point(475,180 + movRobotUmplere), Point(475,190 + movRobotUmplere), Point(485,190 + movRobotUmplere), Point(485,180 + movRobotUmplere)]);
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(478,190), Point(478,200), Point(482,200), Point(482,190)]);
+                  Polygon([Point(478,190 + movRobotUmplere), Point(478,200 + movRobotUmplere), Point(482,200 + movRobotUmplere), Point(482,190 + movRobotUmplere)]);
 
                   //Dozator 2
                   //Brat
 
                   //Suprafata frontala
                   Brush.Color := rgb(63, 54, 74);
-                  Polygon([Point(510,160), Point(510,180), Point(530,180), Point(530,160)]);
+                  Polygon([Point(510,160), Point(510,180 + movRobotUmplere), Point(530,180 + movRobotUmplere), Point(530,160)]);
 
                   //Suprafata laterala
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(530,180), Point(530,160), Point(535,160), Point(535,170)]);
+                  Polygon([Point(530,180 + movRobotUmplere), Point(530,160), Point(535,160), Point(535,170 + movRobotUmplere)]);
 
                   //Dozator
                   Brush.Color := rgb(255, 178, 102);
-                  Polygon([Point(515,180), Point(515,190), Point(525,190), Point(525,180)]);
+                  Polygon([Point(515,180 + movRobotUmplere), Point(515,190 + movRobotUmplere), Point(525,190 + movRobotUmplere), Point(525,180 + movRobotUmplere)]);
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(518,190), Point(518,200), Point(522,200), Point(522,190)]);
+                  Polygon([Point(518,190 + movRobotUmplere), Point(518,200 + movRobotUmplere), Point(522,200 + movRobotUmplere), Point(522,190 + movRobotUmplere)]);
 
                   //Dozator 3
                   //Brat
 
                   //Suprafata frontala
                   Brush.Color := rgb(63, 54, 74);
-                  Polygon([Point(550,160), Point(550,180), Point(570,180), Point(570,160)]);
+                  Polygon([Point(550,160), Point(550,180 + movRobotUmplere), Point(570,180 + movRobotUmplere), Point(570,160)]);
 
                   //Suprafata laterala
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(570,180), Point(570,160), Point(575,160), Point(575,170)]);
+                  Polygon([Point(570,180 + movRobotUmplere), Point(570,160), Point(575,160), Point(575,170 + movRobotUmplere)]);
 
                   //Dozator
                   Brush.Color := rgb(255, 178, 102);
-                  Polygon([Point(555,180), Point(555,190), Point(565,190), Point(565,180)]);
+                  Polygon([Point(555,180 + movRobotUmplere), Point(555,190 + movRobotUmplere), Point(565,190 + movRobotUmplere), Point(565,180 + movRobotUmplere)]);
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(558,190), Point(558,200), Point(562,200), Point(562,190)]);
+                  Polygon([Point(558,190 + movRobotUmplere), Point(558,200 + movRobotUmplere), Point(562,200 + movRobotUmplere), Point(562,190 + movRobotUmplere)]);
 
                   //Dozator 4
                   //Brat
 
                   //Suprafata frontala
                   Brush.Color := rgb(63, 54, 74);
-                  Polygon([Point(590,160), Point(590,180), Point(610,180), Point(610,160)]);
+                  Polygon([Point(590,160), Point(590,180 + movRobotUmplere), Point(610,180 + movRobotUmplere), Point(610,160)]);
 
                   //Suprafata laterala
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(610,180), Point(610,160), Point(615,160), Point(615,170)]);
+                  Polygon([Point(610,180 + movRobotUmplere), Point(610,160), Point(615,160), Point(615,170 + movRobotUmplere)]);
 
                   //Dozator
                   Brush.Color := rgb(255, 178, 102);
-                  Polygon([Point(595,180), Point(595,190), Point(605,190), Point(605,180)]);
+                  Polygon([Point(595,180 + movRobotUmplere), Point(595,190 + movRobotUmplere), Point(605,190 + movRobotUmplere), Point(605,180 + movRobotUmplere)]);
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(598,190), Point(598,200), Point(602,200), Point(602,190)]);
+                  Polygon([Point(598,190 + movRobotUmplere), Point(598,200 + movRobotUmplere), Point(602,200 + movRobotUmplere), Point(602,190 + movRobotUmplere)]);
 
 
                   {Conveior 2}
@@ -212,6 +243,17 @@ implementation
                   Brush.Color := rgb(0, 0, 0);
                   ellipse(950, 280, 960, 290);
                   Brush.Color := rgb(255, 255, 255);
+
+                  {Animatie - conveior 2}
+                  for i := 0 to 10 do
+                    begin
+                        begin
+                          moveto(695 + i * 30 + movBanda2, 240);
+                          lineto(655 + i * 30 + movBanda2, 280);
+                        if movBanda2 = 30 then
+                          movBanda2 := 0;
+                        end;
+                  end;
 
 
                   {Statie dopuri}
@@ -251,17 +293,17 @@ implementation
                   //Brat 1
                   //Suprafete frontale
                   Brush.Color := rgb(94, 94, 94);
-                  Polygon([Point(1050,160), Point(1050,150), Point(1060,150), Point(1060,160)]);
+                  Polygon([Point(1050 + movRobotInchidereX,160), Point(1050 + movRobotInchidereX,150), Point(1060 + movRobotInchidereX,150), Point(1060 + movRobotInchidereX,160)]);
 
                   //Suprafete laterale
-                  Polygon([Point(1060,160), Point(1060,150), Point(1065,150), Point(1065,155)]);
+                  Polygon([Point(1060 + movRobotInchidereX,160), Point(1060 + movRobotInchidereX,150), Point(1065 + movRobotInchidereX,150), Point(1065 + movRobotInchidereX,155)]);
 
                   //Brat 2
                   Brush.Color := rgb(0, 0, 0);
-                  Polygon([Point(1055,170), Point(1055,160), Point(1059,160), Point(1059,170)]);
+                  Polygon([Point(1055 + movRobotInchidereX,170 + movRobotInchidereY), Point(1055 + movRobotInchidereX,160), Point(1059 + movRobotInchidereX,160), Point(1059 + movRobotInchidereX,170 + movRobotInchidereY)]);
 
                   //Prehensor
-                  Polygon([Point(1054,170), Point(1050,178), Point(1050,185), Point(1054,185), Point(1054,180), Point(1057,178), Point(1060,180), Point(1060,185), Point(1064,185), Point(1064,178), Point(1060,170)]);
+                  Polygon([Point(1054 + movRobotInchidereX,170 + movRobotInchidereY), Point(1050 + movRobotInchidereX,178 + movRobotInchidereY), Point(1050 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,180 + movRobotInchidereY), Point(1057 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,180 + movRobotInchidereY), Point(1060 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,170 + movRobotInchidereY)]);
 
 
                   {Conveior 3}
@@ -270,6 +312,68 @@ implementation
                   Brush.Color := rgb(50, 50, 50);
                   Polygon([Point(1080,330), Point(1080,340), Point(880,530), Point(880,520)]);
                   Brush.Color := rgb(255, 255, 255);
+
+                  {Animatie - conveior 3}
+                  for i := 0 to 6 do
+                    begin
+                        begin
+                          moveto(980 - i * 32 - movBanda3, 330 + i * 30 + movBanda3);
+                          lineto(1080 - i * 32 - movBanda3, 330 + i * 30 + movBanda3);
+                        if movBanda3 = 30 then
+                          movBanda3 := 0;
+                        end;
+                  end;
+
+
+                  {Statie etichetare}
+                  //Rola etichetare
+                  Brush.Color := rgb(20, 20, 20);
+                  Ellipse(240, 380, 280, 420);
+
+                  //Suprafata frontala
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(300,375), Point(220,375), Point(220,400), Point(300,400)]);
+
+                  //Suprafata superioara
+                  Brush.Color := rgb(128, 128, 128);
+                  Polygon([Point(220,375), Point(300,375), Point(320,355), Point(240,355)]);
+
+                  //Suprafata laterala
+                  Brush.Color := rgb(160, 160, 160);
+                  Polygon([Point(300,375), Point(300,400), Point(320,380), Point(320,355)]);
+
+
+                  {Suport conveior 5}
+                  //Suprafata frontala
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(495,455), Point(385,455), Point(385,490), Point(495,490)]);
+                  Polygon([Point(150,455), Point(0,455), Point(0,490), Point(150,490)]);
+
+                  //Suprafata laterala
+                  Brush.Color := rgb(160, 160, 160);
+                  Polygon([Point(495,455), Point(495,490), Point(515,470), Point(515,435)]);
+                  Polygon([Point(150,455), Point(150,490), Point(170,470), Point(170,435)]);
+
+
+                  {Conveior 5}
+                  Brush.Color := rgb(96, 96, 96);
+                  Polygon([Point(495,455), Point(515,435), Point(0,435), Point(0,455)]);
+                  Brush.Color := rgb(50, 50, 50);
+                  roundrect(495, 455, -3, 465, 10, 10);
+                  Brush.Color := rgb(0, 0, 0);
+                  ellipse(495, 455, 485, 465);
+                  Brush.Color := rgb(255, 255, 255);
+
+                  {Animatie - conveior 5}
+                  for i := 0 to 20 do
+                    begin
+                        begin
+                          moveto(495 - i * 30 - movBanda5, 455);
+                          lineto(515 - i * 30 - movBanda5, 435);
+                        if movBanda5 = 30 then
+                          movBanda5 := 0;
+                        end;
+                  end;
 
 
                   {Statie impachetare}
@@ -287,19 +391,6 @@ implementation
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(940,480), Point(920,500), Point(920,550), Point(940,530)]);
 
-                  //Ansamblu superior
-                  //Suprafata frontala
-                  Brush.Color := rgb(224, 224, 224);
-                  Polygon([Point(880,430), Point(880,500), Point(750,500), Point(750,430)]);
-
-                  //Suprafata superioara
-                  Brush.Color := rgb(128, 128, 128);
-                  Polygon([Point(880,430), Point(750,430), Point(770,410), Point(900,410)]);
-
-                  //Suprafata laterala
-                  Brush.Color := rgb(160, 160, 160);
-                  Polygon([Point(900,410), Point(880,430), Point(880,500), Point(900,480)]);
-
 
                   {Suport conveior 4}
                   //Suprafata frontala
@@ -313,7 +404,7 @@ implementation
 
                   {Conveior 4}
                   Brush.Color := rgb(96, 96, 96);
-                  Polygon([Point(750,495), Point(750,475), Point(450,475), Point(430,495)]);
+                  Polygon([Point(750,495), Point(770,475), Point(450,475), Point(430,495)]);
                   Brush.Color := rgb(50, 50, 50);
                   roundrect(750, 495, 430, 505, 10, 10);
                   Brush.Color := rgb(0, 0, 0);
@@ -321,6 +412,30 @@ implementation
                   Brush.Color := rgb(0, 0, 0);
                   ellipse(740, 495, 750, 505);
                   Brush.Color := rgb(255, 255, 255);
+
+                  {Animatie - conveior 4}
+                  for i := 0 to 8 do
+                    begin
+                        begin
+                          moveto(730 - i * 30 - movBanda4, 495);
+                          lineto(750 - i * 30 - movBanda4, 475);
+                        if movBanda4 = 30 then
+                          movBanda4 := 0;
+                        end;
+                  end;
+
+                  //Ansamblu superior
+                  //Suprafata frontala
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(880,430), Point(880,500), Point(750,500), Point(750,430)]);
+
+                  //Suprafata superioara
+                  Brush.Color := rgb(128, 128, 128);
+                  Polygon([Point(880,430), Point(750,430), Point(770,410), Point(900,410)]);
+
+                  //Suprafata laterala
+                  Brush.Color := rgb(160, 160, 160);
+                  Polygon([Point(900,410), Point(880,430), Point(880,500), Point(900,480)]);
 
 
                   {Modelare brat robotic R1}
@@ -340,14 +455,14 @@ implementation
                   polygon([point(335, 495) , point(340, 485), point(340, 440), point(335, 450)]);
 
                   //Prima articulatie
-                  x0_1 := trunc(380);
-                  y0_1 := trunc(400);
+                  x0_1 := trunc(380 + r1*sin(movArticulatieUnuR1/50));
+                  y0_1 := trunc(400 + r1*sin(movArticulatieUnuR1/50));
 
-                  x0_2 := trunc(380);
-                  y0_2 := trunc(410);
+                  x0_2 := trunc(380 + r1*sin(movArticulatieUnuR1/50));
+                  y0_2 := trunc(410 + (r1 - 4)*sin(movArticulatieUnuR1/50));
 
-                  x0_3 := trunc(383);
-                  y0_3 := trunc(397);
+                  x0_3 := trunc(383 + r1*sin(movArticulatieUnuR1/50));
+                  y0_3 := trunc(397 + (r1 - 2)*sin(movArticulatieUnuR1/50));
 
                   //Suprafata frontala
                   brush.color := rgb(204, 102, 0);
@@ -359,13 +474,13 @@ implementation
                   ellipse(325, 445, 335, 455);
 
                   //A doua articulatie
-                  x1_1 := trunc(420);
-                  y1_1 := trunc(440);
+                  x1_1 := trunc(420 + r1*cos(movArticulatieDoiR1/50));
+                  y1_1 := trunc(440 + (r1 + 20)*sin(movArticulatieDoiR1/50));
 
-                  x1_2 := trunc(415);
+                  x1_2 := trunc(415 + r1*cos(movArticulatieDoiR1/50));
 
-                  x1_3 := trunc(419);
-                  y1_3 := trunc(437);
+                  x1_3 := trunc(419 + r1*cos(movArticulatieDoiR1/50));
+                  y1_3 := trunc(437 + (r1 + 20)*sin(movArticulatieDoiR1/50));
 
                   //Suprafata frontala
                   brush.color := rgb(204, 102, 0);
@@ -377,11 +492,11 @@ implementation
                   ellipse(x0_1 - 6, y0_1, x0_2 + 6, y0_2);
 
                   //A treia articulatie
-                  x2_1 := trunc(440);
-                  y2_1 := trunc(437);
+                  x2_1 := trunc(440 + r1*cos(movArticulatieTreiR1/50));
+                  y2_1 := trunc(437 + (r1 + 20)*sin(movArticulatieTreiR1/50));
 
-                  x2_2 := trunc(440);
-                  y2_2 := trunc(443);
+                  x2_2 := trunc(440 + r1*cos(movArticulatieTreiR1/50));
+                  y2_2 := trunc(443 + (r1 + 20)*sin(movArticulatieTreiR1/50));
 
                   //Suprafata frontala
                   brush.color := rgb(204, 102, 0);
@@ -390,20 +505,20 @@ implementation
                   ellipse(x1_2, y1_1 - 5, x1_1, y1_1 + 5);
 
                   //Articulatie 1 prehensor
-                  xp1_1 := trunc(x2_1 + 10);
-                  yp1_1 := trunc(y1_1 + 10);
+                  xp1_1 := trunc(x2_1 + 10 + rp*cos(movArticulatiePrehensorR1/80));
+                  yp1_1 := trunc(y1_1 + 10 + rp*sin(movArticulatiePrehensorR1/80));
 
-                  xp1_2 := trunc(x2_1 + 10);
-                  yp1_2 := trunc(y1_1 + 7);
+                  xp1_2 := trunc(x2_1 + 10 + rp*cos(movArticulatiePrehensorR1/80));
+                  yp1_2 := trunc(y1_1 + 7 + rp*sin(movArticulatiePrehensorR1/80));
 
-                  xp1_3 := trunc(x2_1 + 5);
-                  yp1_3 := trunc(y1_1);
+                  xp1_3 := trunc(x2_1 + 5 + rp*cos(movArticulatiePrehensorR1/80));
+                  yp1_3 := trunc(y1_1 + rp*sin(movArticulatiePrehensorR1/80));
 
-                  xp1_4 := trunc(x2_1 + 10);
-                  yp1_4 := trunc(y1_1 - 7);
+                  xp1_4 := trunc(x2_1 + 10 + rp*cos(movArticulatiePrehensorR1/80));
+                  yp1_4 := trunc(y1_1 - 7 + rp*sin(movArticulatiePrehensorR1/80));
 
-                  xp1_5 := trunc(x2_1 + 10);
-                  yp1_5 := trunc(y1_1 - 10);
+                  xp1_5 := trunc(x2_1 + 10 + rp*cos(movArticulatiePrehensorR1/80));
+                  yp1_5 := trunc(y1_1 - 10 + rp*sin(movArticulatiePrehensorR1/80));
 
                   brush.color := rgb(204, 102, 0);
                   polygon([point(x2_1, y1_1 - 3), point(xp1_1, yp1_1), point(xp1_2, yp1_2), point(xp1_3, yp1_3), point(xp1_4, yp1_4), point(xp1_5, yp1_5), point(x2_1, y1_1 + 3)]);
@@ -411,17 +526,17 @@ implementation
                   ellipse(x2_1 - 4, y2_1, x2_2 + 4, y2_2);
 
                   //Articulatie 2/3 prehensor
-                  xp2_1 := trunc(xp1_1 + 10);
-                  yp2_1 := trunc(yp1_1);
+                  xp2_1 := trunc(xp1_1 + 10 + rd*cos(movArtivulatieClemePR1/50));
+                  yp2_1 := trunc(yp1_1 - rd*sin(movArtivulatieClemePR1/50));
 
-                  xp2_2 := trunc(xp1_2 + 10);
-                  yp2_2 := trunc(yp1_2);
+                  xp2_2 := trunc(xp1_2 + 10 + rd*cos(movArtivulatieClemePR1/50));
+                  yp2_2 := trunc(yp1_2 - rd*sin(movArtivulatieClemePR1/50));
 
-                  xp3_1 := trunc(xp1_1 + 10);
-                  yp3_1 := trunc(yp1_4);
+                  xp3_1 := trunc(xp1_1 + 10 + rd*cos(movArtivulatieClemePR1/50));
+                  yp3_1 := trunc(yp1_4 + rd*sin(movArtivulatieClemePR1/50));
 
-                  xp3_2 := trunc(xp1_2 + 10);
-                  yp3_2 := trunc(yp1_5);
+                  xp3_2 := trunc(xp1_2 + 10 + rd*cos(movArtivulatieClemePR1/50));
+                  yp3_2 := trunc(yp1_5 + rd*sin(movArtivulatieClemePR1/50));
 
                   //"Deget 1"
                   brush.color := rgb(204, 102, 0);
@@ -431,9 +546,171 @@ implementation
                   brush.color := rgb(204, 102, 0);
                   polygon([point(xp1_4, yp1_4), point(xp3_1, yp3_1), point(xp3_2, yp3_2), point(xp1_5, yp1_5)]);
 
-                  brush.color:=clWhite;
 
+                  {Podea - Decor}
                   Brush.Color := rgb(0, 51, 102);
+
+
+                  {Animatie - roboti}
+                  case etapa of
+
+                    //Miscare banda 1
+                    0:begin
+                      movBanda1 := movBanda1 + 1;
+                      tBanda1 := tBanda1 + 1;
+                      if tBanda1 = 200 then
+                        etapa := 1;
+                    end;
+
+                    //Coborarare robot umplere
+                    1:begin
+                      movRobotUmplere := movRobotUmplere + 1;
+                      tCoborareUmplere := tCoborareUmplere + 1;
+                      if tCoborareUmplere = 30 then
+                        etapa := 2;
+                    end;
+
+                    //Asteptare umplere
+                    2:begin
+                      tAsteptareUmplere := tAsteptareUmplere + 1;
+                      if tAsteptareUmplere = 50 then
+                        etapa := 3;
+                    end;
+
+                    //Ridicare robot umplere
+                    3:begin
+                      movRobotUmplere := movRobotUmplere - 1;
+                      tRidicareUmplere := tRidicareUmplere + 1;
+                      if tRidicareUmplere = 30 then
+                        etapa := 4;
+                    end;
+
+                    //Miscare banda 2
+                    4:begin
+                      movBanda2 := movBanda2 + 1;
+                      tBanda2 := tBanda2 + 1;
+                      if tBanda2 = 200 then
+                          etapa := 5;
+                    end;
+
+                    //Coborare robot inchidere dopuri
+                    5:begin
+                      movRobotInchidereY := movRobotInchidereY + 1;
+                      tCoborareInchidere := tCoborareInchidere + 1;
+                      if tCoborareInchidere = 40 then
+                          etapa := 6;
+                    end;
+
+                    //Infiletare dopuri
+                    //Miscare spre stanga
+                    6:begin
+                      movRobotInchidereX := movRobotInchidereX - 1;
+                      tMiscareInchidereStanga := tMiscareInchidereStanga + 1;
+                      if tMiscareInchidereStanga = 40 then
+                          etapa := 7;
+                    end;
+
+                    //Revenire pozitie X initiala
+                    7:begin
+                      movRobotInchidereX := movRobotInchidereX + 1;
+                      tMiscareInchidereDreapta := tMiscareInchidereDreapta + 1;
+                      if tMiscareInchidereDreapta = 40 then
+                          etapa := 8;
+                    end;
+
+                    //Ridicare robot inchidere dopuri
+                    8:begin
+                      movRobotInchidereY := movRobotInchidereY - 1;
+                      tRidicareInchidere := tRidicareInchidere + 1;
+                      if tRidicareInchidere = 40 then
+                          etapa := 9;
+                    end;
+
+                    //Miscare banda 3
+                    9:begin
+                      movBanda3 := movBanda3 + 1;
+                      tBanda3 := tBanda3 + 1;
+                      if tBanda3 = 100 then
+                        etapa := 10;
+                    end;
+
+                    //Ambalare - asteptare
+                   10:begin
+                      tAsteptareAmbalare := tAsteptareAmbalare + 1;
+                      if tAsteptareAmbalare = 50 then
+                        etapa := 11;
+                    end;
+
+                    //Miscare banda 4
+                    11:begin
+                      movBanda4 := movBanda4 + 1;
+                      tBanda4 := tBanda4 + 1;
+                      if tBanda4 = 200 then
+                        etapa := 12;
+                    end;
+
+                    //Deschidere prehensor
+                    12:begin
+                      movArtivulatieClemePR1 := movArtivulatieClemePR1 - 1;
+                      if (movArtivulatieClemePR1 < -50) then
+                        etapa := 13;
+                    end;
+
+                    //Coborare brat robotc
+                    13:begin
+                      movArticulatieUnuR1 := movArticulatieUnuR1 + 1;
+                      movArticulatieDoiR1 := movArticulatieDoiR1 + 1;
+                      movArticulatieTreiR1 := movArticulatieTreiR1 + 1;
+                      movArticulatiePrehensorR1 := movArticulatiePrehensorR1 + 1;
+                      if (movArticulatieTreiR1 > 50) then
+                        etapa := 14;
+                    end;
+
+                    //Ridicare brat robotic
+                    14:begin
+                      movArticulatieUnuR1 := movArticulatieUnuR1 - 1;
+                      movArticulatieDoiR1 := movArticulatieDoiR1 - 1;
+                      movArticulatieTreiR1 := movArticulatieTreiR1 - 1;
+                      movArticulatiePrehensorR1 := movArticulatiePrehensorR1 - 1;
+                      if (movArticulatieTreiR1 = 0) then
+                        etapa := 15;
+                    end;
+
+                    //Inchidere prehensor
+                    15:begin
+                      movArtivulatieClemePR1 := movArtivulatieClemePR1 + 1;
+                      if (movArtivulatieClemePR1 > 0) then
+                        etapa := 16;
+                    end;
+
+                    //Miscare banda 5 + revenire etapa 0
+                    16:begin
+                      movBanda5 := movBanda5 + 1;
+                      tBanda5 := tBanda5 + 1;
+                      if tBanda5 = 200 then
+                        etapa := 17;
+                    end;
+
+                    17:begin
+                      tBanda1 := 0;
+                      tBanda2 := 0;
+                      tBanda3 := 0;
+                      tBanda4 := 0;
+                      tBanda5 := 0;
+                      tCoborareUmplere := 0;
+                      tAsteptareUmplere := 0;
+                      tRidicareUmplere := 0;
+                      tCoborareInchidere := 0;
+                      tAsteptareInchidere := 0;
+                      tRidicareInchidere := 0;
+                      tMiscareInchidereStanga := 0;
+                      tMiscareInchidereDreapta  := 0;
+                      tAsteptareAmbalare := 0;
+                      etapa := 0;
+                    end;
+
+                  end;
+
           end;
       end;
 end.
