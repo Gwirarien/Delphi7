@@ -53,10 +53,14 @@ var
   movArticulatiePrehensorR1 : integer = 0;
   movArtivulatieClemePR1 : integer = 0;
 
+  //Parametri sticle
+  movSticleGoale : integer = 0;
+
 const
   r1 = 18;
   rp = 10;
   rd = 5;
+  offsetSticleGoaleX = 100;
 
 implementation
 
@@ -105,6 +109,57 @@ implementation
                   Polygon([Point(210,280), Point(210,200), Point(250,160), Point(250,240)]);
 
 
+                  {Sticle depozit - fara animatie}
+                  //Sticla 1
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(47, 218, 54, 222);
+                  Polygon([Point(47,220), Point(53,220), Point(53,225), Point(47,225)]);
+                  Polygon([Point(47,225), Point(53,225), Point(60,230), Point(40,230)]);
+                  Polygon([Point(40,230), Point(60,230), Point(60,260), Point(40,260)]);
+
+                  //Sticla 2
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(67, 218, 74, 222);
+                  Polygon([Point(67,220), Point(73,220), Point(73,225), Point(67,225)]);
+                  Polygon([Point(67,225), Point(73,225), Point(80,230), Point(60,230)]);
+                  Polygon([Point(60,230), Point(80,230), Point(80,260), Point(60,260)]);
+
+                  //Sticla 3
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(87, 218, 94, 222);
+                  Polygon([Point(87,220), Point(93,220), Point(93,225), Point(87,225)]);
+                  Polygon([Point(87,225), Point(93,225), Point(100,230), Point(80,230)]);
+                  Polygon([Point(80,230), Point(100,230), Point(100,260), Point(80,260)]);
+
+                  //Sticla 4
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(107, 218, 114, 222);
+                  Polygon([Point(107,220), Point(113,220), Point(113,225), Point(107,225)]);
+                  Polygon([Point(107,225), Point(113,225), Point(120,230), Point(100,230)]);
+                  Polygon([Point(100,230), Point(120,230), Point(120,260), Point(100,260)]);
+
+                  //Sticla 5
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(127, 218, 134, 222);
+                  Polygon([Point(127,220), Point(133,220), Point(133,225), Point(127,225)]);
+                  Polygon([Point(127,225), Point(133,225), Point(140,230), Point(120,230)]);
+                  Polygon([Point(120,230), Point(140,230), Point(140,260), Point(120,260)]);
+
+                  //Sticla 6
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(147, 218, 154, 222);
+                  Polygon([Point(147,220), Point(153,220), Point(153,225), Point(147,225)]);
+                  Polygon([Point(147,225), Point(153,225), Point(160,230), Point(140,230)]);
+                  Polygon([Point(140,230), Point(160,230), Point(160,260), Point(140,260)]);
+
+                  //Sticla 7
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(167, 218, 174, 222);
+                  Polygon([Point(167,220), Point(173,220), Point(173,225), Point(167,225)]);
+                  Polygon([Point(167,225), Point(173,225), Point(180,230), Point(160,230)]);
+                  Polygon([Point(160,230), Point(180,230), Point(180,260), Point(160,260)]);
+
+
                   {Conveior 1}
                   Brush.Color := rgb(96, 96, 96);
                   Polygon([Point(210,280), Point(250,240), Point(440,240), Point(400,280)]);
@@ -127,6 +182,40 @@ implementation
                           movBanda1 := 0;
                         end;
                   end;
+
+
+                  {Sticle goale}
+                  //Sticla 1
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(307 - offsetSticleGoaleX + movSticleGoale, 218, 314 - offsetSticleGoaleX + movSticleGoale, 222);
+                  ellipse(300 - offsetSticleGoaleX + movSticleGoale, 256, 320 - offsetSticleGoaleX + movSticleGoale, 264);
+                  Polygon([Point(307 - offsetSticleGoaleX + movSticleGoale,220), Point(313 - offsetSticleGoaleX + movSticleGoale,220), Point(313 - offsetSticleGoaleX + movSticleGoale,225), Point(307 - offsetSticleGoaleX + movSticleGoale,225)]);
+                  Polygon([Point(307 - offsetSticleGoaleX + movSticleGoale,225), Point(313 - offsetSticleGoaleX + movSticleGoale,225), Point(320 - offsetSticleGoaleX + movSticleGoale,230), Point(300 - offsetSticleGoaleX + movSticleGoale,230)]);
+                  Polygon([Point(300 - offsetSticleGoaleX + movSticleGoale,230), Point(320 - offsetSticleGoaleX + movSticleGoale,230), Point(320 - offsetSticleGoaleX + movSticleGoale,260), Point(300 - offsetSticleGoaleX + movSticleGoale,260)]);
+
+                  //Sticla 2
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(332 - offsetSticleGoaleX + movSticleGoale, 218, 339 - offsetSticleGoaleX + movSticleGoale, 222);
+                  ellipse(325 - offsetSticleGoaleX + movSticleGoale, 256, 345 - offsetSticleGoaleX + movSticleGoale, 264);
+                  Polygon([Point(332 - offsetSticleGoaleX + movSticleGoale,220), Point(338 - offsetSticleGoaleX + movSticleGoale,220), Point(338 - offsetSticleGoaleX + movSticleGoale,225), Point(332 - offsetSticleGoaleX + movSticleGoale,225)]);
+                  Polygon([Point(332 - offsetSticleGoaleX + movSticleGoale,225), Point(338 - offsetSticleGoaleX + movSticleGoale,225), Point(345 - offsetSticleGoaleX + movSticleGoale,230), Point(325 - offsetSticleGoaleX + movSticleGoale,230)]);
+                  Polygon([Point(325 - offsetSticleGoaleX + movSticleGoale,230), Point(345 - offsetSticleGoaleX + movSticleGoale,230), Point(345 - offsetSticleGoaleX + movSticleGoale,260), Point(325 - offsetSticleGoaleX + movSticleGoale,260)]);
+
+                  //Sticla 3
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(357 - offsetSticleGoaleX + movSticleGoale, 218, 364 - offsetSticleGoaleX + movSticleGoale, 222);
+                  ellipse(350 - offsetSticleGoaleX + movSticleGoale, 256, 370 - offsetSticleGoaleX + movSticleGoale, 264);
+                  Polygon([Point(357 - offsetSticleGoaleX + movSticleGoale,220), Point(363 - offsetSticleGoaleX + movSticleGoale,220), Point(363 - offsetSticleGoaleX + movSticleGoale,225), Point(357 - offsetSticleGoaleX + movSticleGoale,225)]);
+                  Polygon([Point(357 - offsetSticleGoaleX + movSticleGoale,225), Point(363 - offsetSticleGoaleX + movSticleGoale,225), Point(370 - offsetSticleGoaleX + movSticleGoale,230), Point(350 - offsetSticleGoaleX + movSticleGoale,230)]);
+                  Polygon([Point(350 - offsetSticleGoaleX + movSticleGoale,230), Point(370 - offsetSticleGoaleX + movSticleGoale,230), Point(370 - offsetSticleGoaleX + movSticleGoale,260), Point(350 - offsetSticleGoaleX + movSticleGoale,260)]);
+
+                  //Sticla 4
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(382 - offsetSticleGoaleX + movSticleGoale, 218, 389 - offsetSticleGoaleX + movSticleGoale, 222);
+                  ellipse(375 - offsetSticleGoaleX + movSticleGoale, 256, 395 - offsetSticleGoaleX + movSticleGoale, 264);
+                  Polygon([Point(382 - offsetSticleGoaleX + movSticleGoale,220), Point(388 - offsetSticleGoaleX + movSticleGoale,220), Point(388 - offsetSticleGoaleX + movSticleGoale,225), Point(382 - offsetSticleGoaleX + movSticleGoale,225)]);
+                  Polygon([Point(382 - offsetSticleGoaleX + movSticleGoale,225), Point(388 - offsetSticleGoaleX + movSticleGoale,225), Point(395 - offsetSticleGoaleX + movSticleGoale,230), Point(375 - offsetSticleGoaleX + movSticleGoale,230)]);
+                  Polygon([Point(375 - offsetSticleGoaleX + movSticleGoale,230), Point(395 - offsetSticleGoaleX + movSticleGoale,230), Point(395 - offsetSticleGoaleX + movSticleGoale,260), Point(375 - offsetSticleGoaleX + movSticleGoale,260)]);
 
 
                   {Statie umplere}
@@ -256,6 +345,9 @@ implementation
                   end;
 
 
+                  {Sticle umplute}
+
+
                   {Statie dopuri}
                   //Suprafata frontala
                   Brush.Color := rgb(204, 255, 255);
@@ -305,6 +397,9 @@ implementation
                   //Prehensor
                   Polygon([Point(1054 + movRobotInchidereX,170 + movRobotInchidereY), Point(1050 + movRobotInchidereX,178 + movRobotInchidereY), Point(1050 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,180 + movRobotInchidereY), Point(1057 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,180 + movRobotInchidereY), Point(1060 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,170 + movRobotInchidereY)]);
 
+                  //Margine frontala
+                  Brush.Color := rgb(255, 255, 153);
+                  Polygon([Point(960,240), Point(960,220), Point(1100,220), Point(1100,240)]);
 
                   {Conveior 3}
                   Brush.Color := rgb(96, 96, 96);
@@ -332,6 +427,7 @@ implementation
 
                   //Suprafata frontala
                   Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(240,355), Point(320,355), Point(320,490), Point(240,490)]);
                   Polygon([Point(300,375), Point(220,375), Point(220,400), Point(300,400)]);
 
                   //Suprafata superioara
@@ -557,6 +653,7 @@ implementation
                     //Miscare banda 1
                     0:begin
                       movBanda1 := movBanda1 + 1;
+                      movSticleGoale := movSticleGoale + 1;
                       tBanda1 := tBanda1 + 1;
                       if tBanda1 = 200 then
                         etapa := 1;
@@ -706,6 +803,20 @@ implementation
                       tMiscareInchidereStanga := 0;
                       tMiscareInchidereDreapta  := 0;
                       tAsteptareAmbalare := 0;
+                      movBanda1 := 0;
+                      movBanda2 := 0;
+                      movBanda3 := 0;
+                      movBanda4 := 0;
+                      movBanda5 := 0;
+                      movRobotUmplere := 0;
+                      movRobotInchidereX := 0;
+                      movRobotInchidereY := 0;
+                      movArticulatieUnuR1 := 0;
+                      movArticulatieDoiR1 := 0;
+                      movArticulatieTreiR1 := 0;
+                      movArticulatiePrehensorR1 := 0;
+                      movArtivulatieClemePR1 := 0;
+                      movSticleGoale := 0;
                       etapa := 0;
                     end;
 
