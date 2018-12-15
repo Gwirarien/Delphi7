@@ -56,6 +56,7 @@ var
   //Parametri sticle
   movSticleGoale : integer = 0;
   movSticlePline : integer = 0;
+  movSticleDop : integer = 0;
 
 const
   r1 = 18;
@@ -63,6 +64,8 @@ const
   rd = 5;
   offsetSticleGoaleX = 100;
   offsetSticlePlineX = 210;
+  offsetSticleDopX = 60;
+  offsetSticleDopY = 60;
 
 implementation
 
@@ -344,7 +347,6 @@ implementation
 
 
                   {Sticle umplute}
-
                   //Sticla 1
                   Brush.Color := rgb(204, 255, 229);
                   ellipse(687 - offsetSticlePlineX + movSticlePline, 228, 695 - offsetSticlePlineX + movSticlePline, 232);
@@ -398,6 +400,7 @@ implementation
                   Polygon([Point(400,160), Point(400,120), Point(650,120), Point(650,160)]);
                   Polygon([Point(400,340), Point(400,260), Point(650,260), Point(650,340)]);
 
+
                   {Statie dopuri}
                   //Suprafata frontala
                   Brush.Color := rgb(204, 255, 255);
@@ -421,7 +424,6 @@ implementation
                   //Margini laterale
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(1100,150), Point(1100,120), Point(1160,60), Point(1160,90)]);
-                  Polygon([Point(1100,340), Point(1100,240), Point(1160,180), Point(1160,280)]);
                   Brush.Color := rgb(255, 255, 255);
 
                   //Gaura iesire
@@ -431,52 +433,6 @@ implementation
 
 
                   {Robot inchidere dopuri}
-                  {
-                  //Sticla 1
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(687 - offsetSticlePlineX + movSticlePline, 228, 695 - offsetSticlePlineX + movSticlePline, 232);
-                  Brush.Color := rgb(51, 153, 255);
-                  ellipse(680 - offsetSticlePlineX + movSticlePline, 266, 700 - offsetSticlePlineX + movSticlePline, 274);
-                  Brush.Color := rgb(204, 255, 229);
-                  Polygon([Point(687 - offsetSticlePlineX + movSticlePline,230), Point(694 - offsetSticlePlineX + movSticlePline,230), Point(694 - offsetSticlePlineX + movSticlePline,235), Point(687 - offsetSticlePlineX + movSticlePline,235)]);
-                  Polygon([Point(687 - offsetSticlePlineX + movSticlePline,235), Point(694 - offsetSticlePlineX + movSticlePline,235), Point(700 - offsetSticlePlineX + movSticlePline,240), Point(680 - offsetSticlePlineX + movSticlePline,240)]);
-                  Brush.Color := rgb(51, 153, 255);
-                  Polygon([Point(680 - offsetSticlePlineX + movSticlePline,240), Point(700 - offsetSticlePlineX + movSticlePline,240), Point(700 - offsetSticlePlineX + movSticlePline,270), Point(680 - offsetSticlePlineX + movSticlePline,270)]);
-
-                  //Sticla 2
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(727 - offsetSticlePlineX + movSticlePline, 228, 735 - offsetSticlePlineX + movSticlePline, 232);
-                  Brush.Color := rgb(51, 153, 255);
-                  ellipse(720 - offsetSticlePlineX + movSticlePline, 266, 740 - offsetSticlePlineX + movSticlePline, 274);
-                  Brush.Color := rgb(204, 255, 229);
-                  Polygon([Point(727 - offsetSticlePlineX + movSticlePline,230), Point(734 - offsetSticlePlineX + movSticlePline,230), Point(734 - offsetSticlePlineX + movSticlePline,235), Point(727 - offsetSticlePlineX + movSticlePline,235)]);
-                  Polygon([Point(727 - offsetSticlePlineX + movSticlePline,235), Point(734 - offsetSticlePlineX + movSticlePline,235), Point(740 - offsetSticlePlineX + movSticlePline,240), Point(720 - offsetSticlePlineX + movSticlePline,240)]);
-                  Brush.Color := rgb(51, 153, 255);
-                  Polygon([Point(720 - offsetSticlePlineX + movSticlePline,240), Point(740 - offsetSticlePlineX + movSticlePline,240), Point(740 - offsetSticlePlineX + movSticlePline,270), Point(720 - offsetSticlePlineX + movSticlePline,270)]);
-
-                  //Sticla 3
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(767 - offsetSticlePlineX + movSticlePline, 228, 775 - offsetSticlePlineX + movSticlePline, 232);
-                  Brush.Color := rgb(51, 153, 255);
-                  ellipse(760 - offsetSticlePlineX + movSticlePline, 266, 780 - offsetSticlePlineX + movSticlePline, 274);
-                  Brush.Color := rgb(204, 255, 229);
-                  Polygon([Point(767 - offsetSticlePlineX + movSticlePline,230), Point(774 - offsetSticlePlineX + movSticlePline,230), Point(774 - offsetSticlePlineX + movSticlePline,235), Point(767 - offsetSticlePlineX + movSticlePline,235)]);
-                  Polygon([Point(767 - offsetSticlePlineX + movSticlePline,235), Point(774 - offsetSticlePlineX + movSticlePline,235), Point(780 - offsetSticlePlineX + movSticlePline,240), Point(760 - offsetSticlePlineX + movSticlePline,240)]);
-                  Brush.Color := rgb(51, 153, 255);
-                  Polygon([Point(760 - offsetSticlePlineX + movSticlePline,240), Point(780 - offsetSticlePlineX + movSticlePline,240), Point(780 - offsetSticlePlineX + movSticlePline,270), Point(760 - offsetSticlePlineX + movSticlePline,270)]);
-
-                  //Sticla 4
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(807 - offsetSticlePlineX + movSticlePline, 228, 815 - offsetSticlePlineX + movSticlePline, 232);
-                  Brush.Color := rgb(51, 153, 255);
-                  ellipse(800 - offsetSticlePlineX + movSticlePline, 266, 820 - offsetSticlePlineX + movSticlePline, 274);
-                  Brush.Color := rgb(204, 255, 229);
-                  Polygon([Point(807 - offsetSticlePlineX + movSticlePline,230), Point(814 - offsetSticlePlineX + movSticlePline,230), Point(814 - offsetSticlePlineX + movSticlePline,235), Point(807 - offsetSticlePlineX + movSticlePline,235)]);
-                  Polygon([Point(807 - offsetSticlePlineX + movSticlePline,235), Point(814 - offsetSticlePlineX + movSticlePline,235), Point(820 - offsetSticlePlineX + movSticlePline,240), Point(800 - offsetSticlePlineX + movSticlePline,240)]);
-                  Brush.Color := rgb(51, 153, 255);
-                  Polygon([Point(800 - offsetSticlePlineX + movSticlePline,240), Point(820 - offsetSticlePlineX + movSticlePline,240), Point(820 - offsetSticlePlineX + movSticlePline,270), Point(800 - offsetSticlePlineX + movSticlePline,270)]);
-                  }
-
                   //Brat 1
                   //Suprafete frontale
                   Brush.Color := rgb(94, 94, 94);
@@ -491,14 +447,6 @@ implementation
 
                   //Prehensor
                   Polygon([Point(1054 + movRobotInchidereX,170 + movRobotInchidereY), Point(1050 + movRobotInchidereX,178 + movRobotInchidereY), Point(1050 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,185 + movRobotInchidereY), Point(1054 + movRobotInchidereX,180 + movRobotInchidereY), Point(1057 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,180 + movRobotInchidereY), Point(1060 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,185 + movRobotInchidereY), Point(1064 + movRobotInchidereX,178 + movRobotInchidereY), Point(1060 + movRobotInchidereX,170 + movRobotInchidereY)]);
-
-                  //Margine frontala
-                  Brush.Color := rgb(255, 255, 153);
-                  Polygon([Point(960,240), Point(960,220), Point(1100,220), Point(1100,240)]);
-
-                  //Margine laterala
-                  Brush.Color := rgb(255, 255, 153);
-                  Polygon([Point(1100,220), Point(1100,240), Point(1160,180), Point(1160,160)]);
 
                   {Conveior 3}
                   Brush.Color := rgb(96, 96, 96);
@@ -517,6 +465,68 @@ implementation
                           movBanda3 := 0;
                         end;
                   end;
+
+                  {Sticle cu dop}
+                  //Sticla 4
+                  Brush.Color := rgb(255, 51, 51);
+                  ellipse(1062 + offsetSticleDopX - movSticleDop, 252 - offsetSticleDopY + movSticleDop, 1069 + offsetSticleDopX - movSticleDop, 257 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(51, 153, 255);
+                  ellipse(1055 + offsetSticleDopX - movSticleDop, 291 - offsetSticleDopY + movSticleDop, 1075 + offsetSticleDopX - movSticleDop, 299 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(204, 255, 229);
+                  Polygon([Point(1062 + offsetSticleDopX - movSticleDop,255 - offsetSticleDopY + movSticleDop), Point(1068 + offsetSticleDopX - movSticleDop,255 - offsetSticleDopY + movSticleDop), Point(1068 + offsetSticleDopX - movSticleDop,260 - offsetSticleDopY + movSticleDop), Point(1062 + offsetSticleDopX - movSticleDop,260 - offsetSticleDopY + movSticleDop)]);
+                  Polygon([Point(1062 + offsetSticleDopX - movSticleDop,260 - offsetSticleDopY + movSticleDop), Point(1068 + offsetSticleDopX - movSticleDop,260 - offsetSticleDopY + movSticleDop), Point(1075 + offsetSticleDopX - movSticleDop,265 - offsetSticleDopY + movSticleDop), Point(1055 + offsetSticleDopX - movSticleDop,265 - offsetSticleDopY + movSticleDop)]);
+                  Brush.Color := rgb(51, 153, 255);
+                  Polygon([Point(1055 + offsetSticleDopX - movSticleDop,265 - offsetSticleDopY + movSticleDop), Point(1075 + offsetSticleDopX - movSticleDop,265 - offsetSticleDopY + movSticleDop), Point(1075 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop), Point(1055 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop)]);
+
+
+                  //Sticla 3
+                  Brush.Color := rgb(255, 51, 51);
+                  ellipse(1047 + offsetSticleDopX - movSticleDop, 267 - offsetSticleDopY + movSticleDop, 1054 + offsetSticleDopX - movSticleDop, 272 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(51, 153, 255);
+                  ellipse(1040 + offsetSticleDopX - movSticleDop, 306 - offsetSticleDopY + movSticleDop, 1060 + offsetSticleDopX - movSticleDop, 314 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(204, 255, 229);
+                  Polygon([Point(1047 + offsetSticleDopX - movSticleDop,270 - offsetSticleDopY + movSticleDop), Point(1053 + offsetSticleDopX - movSticleDop,270 - offsetSticleDopY + movSticleDop), Point(1053 + offsetSticleDopX - movSticleDop,275 - offsetSticleDopY + movSticleDop), Point(1047 + offsetSticleDopX - movSticleDop,275 - offsetSticleDopY + movSticleDop)]);
+                  Polygon([Point(1047 + offsetSticleDopX - movSticleDop,275 - offsetSticleDopY + movSticleDop), Point(1053 + offsetSticleDopX - movSticleDop,275 - offsetSticleDopY + movSticleDop), Point(1060 + offsetSticleDopX - movSticleDop,280 - offsetSticleDopY + movSticleDop), Point(1040 + offsetSticleDopX - movSticleDop,280 - offsetSticleDopY + movSticleDop)]);
+                  Brush.Color := rgb(51, 153, 255);
+                  Polygon([Point(1040 + offsetSticleDopX - movSticleDop,280 - offsetSticleDopY + movSticleDop), Point(1060 + offsetSticleDopX - movSticleDop,280 - offsetSticleDopY + movSticleDop), Point(1060 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop), Point(1040 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop)]);
+
+                  //Sticla 2
+                  Brush.Color := rgb(255, 51, 51);
+                  ellipse(1032 + offsetSticleDopX - movSticleDop, 282 - offsetSticleDopY + movSticleDop, 1039 + offsetSticleDopX - movSticleDop, 287 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(51, 153, 255);
+                  ellipse(1025 + offsetSticleDopX - movSticleDop, 321 - offsetSticleDopY + movSticleDop, 1045 + offsetSticleDopX - movSticleDop, 329 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(204, 255, 229);
+                  Polygon([Point(1032 + offsetSticleDopX - movSticleDop,285 - offsetSticleDopY + movSticleDop), Point(1038 + offsetSticleDopX - movSticleDop,285 - offsetSticleDopY + movSticleDop), Point(1038 + offsetSticleDopX - movSticleDop,290 - offsetSticleDopY + movSticleDop), Point(1032 + offsetSticleDopX - movSticleDop,290 - offsetSticleDopY + movSticleDop)]);
+                  Polygon([Point(1032 + offsetSticleDopX - movSticleDop,290 - offsetSticleDopY + movSticleDop), Point(1038 + offsetSticleDopX - movSticleDop,290 - offsetSticleDopY + movSticleDop), Point(1045 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop), Point(1025 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop)]);
+                  Brush.Color := rgb(51, 153, 255);
+                  Polygon([Point(1025 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop), Point(1045 + offsetSticleDopX - movSticleDop,295 - offsetSticleDopY + movSticleDop), Point(1045 + offsetSticleDopX - movSticleDop,325 - offsetSticleDopY + movSticleDop), Point(1025 + offsetSticleDopX - movSticleDop,325 - offsetSticleDopY + movSticleDop)]);
+
+                  //Sticla 1
+                  Brush.Color := rgb(255, 51, 51);
+                  ellipse(1017 + offsetSticleDopX - movSticleDop, 297 - offsetSticleDopY + movSticleDop, 1024 + offsetSticleDopX - movSticleDop, 302 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(51, 153, 255);
+                  ellipse(1010 + offsetSticleDopX - movSticleDop, 336 - offsetSticleDopY + movSticleDop, 1030 + offsetSticleDopX - movSticleDop, 344 - offsetSticleDopY + movSticleDop);
+                  Brush.Color := rgb(204, 255, 229);
+                  Polygon([Point(1017 + offsetSticleDopX - movSticleDop,300 - offsetSticleDopY + movSticleDop), Point(1023 + offsetSticleDopX - movSticleDop,300 - offsetSticleDopY + movSticleDop), Point(1023 + offsetSticleDopX - movSticleDop,305 - offsetSticleDopY + movSticleDop), Point(1017 + offsetSticleDopX - movSticleDop,305 - offsetSticleDopY + movSticleDop)]);
+                  Polygon([Point(1017 + offsetSticleDopX - movSticleDop,305 - offsetSticleDopY + movSticleDop), Point(1023 + offsetSticleDopX - movSticleDop,305 - offsetSticleDopY + movSticleDop), Point(1030 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop), Point(1010 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop)]);
+                  Brush.Color := rgb(51, 153, 255);
+                  Polygon([Point(1010 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop), Point(1030 + offsetSticleDopX - movSticleDop,310 - offsetSticleDopY + movSticleDop), Point(1030 + offsetSticleDopX - movSticleDop,340 - offsetSticleDopY + movSticleDop), Point(1010 + offsetSticleDopX - movSticleDop,340 - offsetSticleDopY + movSticleDop)]);
+
+                  
+                  //Margine frontala
+                  Brush.Color := rgb(255, 255, 153);
+                  Polygon([Point(960,240), Point(960,220), Point(1100,220), Point(1100,240)]);
+
+                  //Margine laterala
+                  Brush.Color := rgb(255, 255, 153);
+                  Polygon([Point(1100,215), Point(1100,240), Point(1160,180), Point(1160,155)]);
+
+                  //Margini acoperire
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(960,280), Point(960,240), Point(1100,240), Point(1100,280)]);
+                  Polygon([Point(1080,280), Point(1080,340), Point(1100,340), Point(1100,280)]);
+                  Brush.Color := rgb(160, 160, 160);
+                  Polygon([Point(1100,340), Point(1100,240), Point(1160,180), Point(1160,280)]);
 
 
                   {Statie etichetare}
@@ -826,8 +836,9 @@ implementation
                     //Miscare banda 3
                     9:begin
                       movBanda3 := movBanda3 + 1;
+                      movSticleDop := movSticleDop + 1;
                       tBanda3 := tBanda3 + 1;
-                      if tBanda3 = 100 then
+                      if tBanda3 = 250 then
                         etapa := 10;
                     end;
 
@@ -918,6 +929,7 @@ implementation
                       movArtivulatieClemePR1 := 0;
                       movSticleGoale := 0;
                       movSticlePline := 0;
+                      movSticleDop := 0;
                       etapa := 0;
                     end;
 
