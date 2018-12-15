@@ -3,6 +3,8 @@ object Form1: TForm1
   Top = 213
   Width = 1229
   Height = 743
+  HorzScrollBar.Position = 5
+  VertScrollBar.Position = 57
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,8 +16,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = 208
-    Top = 72
+    Left = 179
+    Top = 15
     Width = 1280
     Height = 720
   end
