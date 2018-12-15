@@ -58,14 +58,23 @@ var
   movSticlePline : integer = 0;
   movSticleDop : integer = 0;
 
+  //Parametri cutie
+  movCutieX : integer = 0;
+  movCutieY : integer = 0;
+  movCutieInchisaX : integer = 0;
+  culoareScotchR : integer = 153;
+  culoareScotchG : integer = 76;
+  culoareScotchB : integer = 0;
+
 const
   r1 = 18;
   rp = 10;
   rd = 5;
-  offsetSticleGoaleX = 100;
+  offsetSticleGoaleX = 180;
   offsetSticlePlineX = 210;
-  offsetSticleDopX = 60;
-  offsetSticleDopY = 60;
+  offsetSticleDopX = 65;
+  offsetSticleDopY = 65;
+  offsetCutieX = 0;
 
 implementation
 
@@ -98,6 +107,7 @@ implementation
                   //Suprafata frontala
                   Brush.Color := rgb(224, 224, 224);
                   Polygon([Point(20,340), Point(200,340), Point(200,160), Point(20,160)]);
+                  Polygon([Point(20,260), Point(40,260), Point(40,160), Point(20,160)]);
                   Brush.Color := rgb(204, 255, 255);
                   Polygon([Point(40,260), Point(180,260), Point(180,200), Point(40,200)]);
 
@@ -108,62 +118,11 @@ implementation
                   //Suprafata laterala
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(200,340), Point(200,160), Point(260,100), Point(260,280)]);
+                  Polygon([Point(250,110), Point(260,100), Point(260,280), Point(250,290)]);
 
                   //Gaura iesire
                   Brush.Color := rgb(63, 54, 74);
                   Polygon([Point(210,280), Point(210,200), Point(250,160), Point(250,240)]);
-
-
-                  {Sticle depozit - fara animatie}
-                  //Sticla 1
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(47, 218, 54, 222);
-                  Polygon([Point(47,220), Point(53,220), Point(53,225), Point(47,225)]);
-                  Polygon([Point(47,225), Point(53,225), Point(60,230), Point(40,230)]);
-                  Polygon([Point(40,230), Point(60,230), Point(60,260), Point(40,260)]);
-
-                  //Sticla 2
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(67, 218, 74, 222);
-                  Polygon([Point(67,220), Point(73,220), Point(73,225), Point(67,225)]);
-                  Polygon([Point(67,225), Point(73,225), Point(80,230), Point(60,230)]);
-                  Polygon([Point(60,230), Point(80,230), Point(80,260), Point(60,260)]);
-
-                  //Sticla 3
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(87, 218, 94, 222);
-                  Polygon([Point(87,220), Point(93,220), Point(93,225), Point(87,225)]);
-                  Polygon([Point(87,225), Point(93,225), Point(100,230), Point(80,230)]);
-                  Polygon([Point(80,230), Point(100,230), Point(100,260), Point(80,260)]);
-
-                  //Sticla 4
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(107, 218, 114, 222);
-                  Polygon([Point(107,220), Point(113,220), Point(113,225), Point(107,225)]);
-                  Polygon([Point(107,225), Point(113,225), Point(120,230), Point(100,230)]);
-                  Polygon([Point(100,230), Point(120,230), Point(120,260), Point(100,260)]);
-
-                  //Sticla 5
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(127, 218, 134, 222);
-                  Polygon([Point(127,220), Point(133,220), Point(133,225), Point(127,225)]);
-                  Polygon([Point(127,225), Point(133,225), Point(140,230), Point(120,230)]);
-                  Polygon([Point(120,230), Point(140,230), Point(140,260), Point(120,260)]);
-
-                  //Sticla 6
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(147, 218, 154, 222);
-                  Polygon([Point(147,220), Point(153,220), Point(153,225), Point(147,225)]);
-                  Polygon([Point(147,225), Point(153,225), Point(160,230), Point(140,230)]);
-                  Polygon([Point(140,230), Point(160,230), Point(160,260), Point(140,260)]);
-
-                  //Sticla 7
-                  Brush.Color := rgb(204, 255, 229);
-                  ellipse(167, 218, 174, 222);
-                  Polygon([Point(167,220), Point(173,220), Point(173,225), Point(167,225)]);
-                  Polygon([Point(167,225), Point(173,225), Point(180,230), Point(160,230)]);
-                  Polygon([Point(160,230), Point(180,230), Point(180,260), Point(160,260)]);
-
 
                   {Conveior 1}
                   Brush.Color := rgb(96, 96, 96);
@@ -223,6 +182,66 @@ implementation
                   Polygon([Point(375 - offsetSticleGoaleX + movSticleGoale,230), Point(395 - offsetSticleGoaleX + movSticleGoale,230), Point(395 - offsetSticleGoaleX + movSticleGoale,260), Point(375 - offsetSticleGoaleX + movSticleGoale,260)]);
 
 
+                  {Sticle depozit - fara animatie}
+                  //Sticla 1
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(47, 218, 54, 222);
+                  Polygon([Point(47,220), Point(53,220), Point(53,225), Point(47,225)]);
+                  Polygon([Point(47,225), Point(53,225), Point(60,230), Point(40,230)]);
+                  Polygon([Point(40,230), Point(60,230), Point(60,260), Point(40,260)]);
+
+                  //Sticla 2
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(67, 218, 74, 222);
+                  Polygon([Point(67,220), Point(73,220), Point(73,225), Point(67,225)]);
+                  Polygon([Point(67,225), Point(73,225), Point(80,230), Point(60,230)]);
+                  Polygon([Point(60,230), Point(80,230), Point(80,260), Point(60,260)]);
+
+                  //Sticla 3
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(87, 218, 94, 222);
+                  Polygon([Point(87,220), Point(93,220), Point(93,225), Point(87,225)]);
+                  Polygon([Point(87,225), Point(93,225), Point(100,230), Point(80,230)]);
+                  Polygon([Point(80,230), Point(100,230), Point(100,260), Point(80,260)]);
+
+                  //Sticla 4
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(107, 218, 114, 222);
+                  Polygon([Point(107,220), Point(113,220), Point(113,225), Point(107,225)]);
+                  Polygon([Point(107,225), Point(113,225), Point(120,230), Point(100,230)]);
+                  Polygon([Point(100,230), Point(120,230), Point(120,260), Point(100,260)]);
+
+                  //Sticla 5
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(127, 218, 134, 222);
+                  Polygon([Point(127,220), Point(133,220), Point(133,225), Point(127,225)]);
+                  Polygon([Point(127,225), Point(133,225), Point(140,230), Point(120,230)]);
+                  Polygon([Point(120,230), Point(140,230), Point(140,260), Point(120,260)]);
+
+                  //Sticla 6
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(147, 218, 154, 222);
+                  Polygon([Point(147,220), Point(153,220), Point(153,225), Point(147,225)]);
+                  Polygon([Point(147,225), Point(153,225), Point(160,230), Point(140,230)]);
+                  Polygon([Point(140,230), Point(160,230), Point(160,260), Point(140,260)]);
+
+                  //Sticla 7
+                  Brush.Color := rgb(204, 255, 229);
+                  ellipse(167, 218, 174, 222);
+                  Polygon([Point(167,220), Point(173,220), Point(173,225), Point(167,225)]);
+                  Polygon([Point(167,225), Point(173,225), Point(180,230), Point(160,230)]);
+                  Polygon([Point(160,230), Point(180,230), Point(180,260), Point(160,260)]);
+
+                  //Margini acoperire
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(20,340), Point(200,340), Point(200,260), Point(20,260)]);
+                  Polygon([Point(180,260), Point(200,260), Point(200,160), Point(180,160)]);
+                  Brush.Color := rgb(160, 160, 160);
+                  Polygon([Point(200,340), Point(200,160), Point(210,150), Point(210,330)]);
+
+
+
+
                   {Statie umplere}
                   //Suprafata frontala
                   Polygon([Point(400,340), Point(400,120), Point(650,120), Point(650,340)]);
@@ -235,7 +254,6 @@ implementation
                   Polygon([Point(650,340), Point(650,120), Point(710,60), Point(710,280)]);
 
                   //Margini frontale
-
                   Brush.Color := rgb(204, 255, 255);
                   Polygon([Point(400,160), Point(400,230), Point(650,230), Point(650,160)]);
 
@@ -530,14 +548,14 @@ implementation
 
 
                   {Statie etichetare}
-                  //Rola etichetare
-                  Brush.Color := rgb(20, 20, 20);
-                  Ellipse(240, 380, 280, 420);
 
                   //Suprafata frontala
                   Brush.Color := rgb(224, 224, 224);
                   Polygon([Point(240,355), Point(320,355), Point(320,490), Point(240,490)]);
-                  Polygon([Point(300,375), Point(220,375), Point(220,400), Point(300,400)]);
+
+                  //Rola etichetare
+                  Brush.Color := rgb(20, 20, 20);
+                  Ellipse(240, 365, 280, 405);
 
                   //Suprafata superioara
                   Brush.Color := rgb(128, 128, 128);
@@ -628,6 +646,23 @@ implementation
                           movBanda4 := 0;
                         end;
                   end;
+
+                  //"Deget 2"
+                  brush.color := rgb(204, 102, 0);
+                  polygon([point(xp1_4, yp1_4), point(xp3_1, yp3_1), point(xp3_2, yp3_2), point(xp1_5, yp1_5)]);
+
+                  {Cutie cu bidoane}
+                  Brush.Color := rgb(153, 76, 0);
+                  Polygon([Point(750 - movCutieX - movCutieInchisaX,493 - movCutieY), Point(750 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,493 - movCutieY)]);
+                  Polygon([Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,493 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,483 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,443 - movCutieY)]);
+                  Brush.Color := rgb(culoareScotchR,culoareScotchG,culoareScotchB);
+                  Polygon([Point(750 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,443 - movCutieY), Point(760 - movCutieX - movCutieInchisaX,443 - movCutieY)]);
+                  moveto(755 - movCutieX - movCutieInchisaX, 446 - movCutieY);
+                  lineto(785 - movCutieX - movCutieInchisaX, 446 - movCutieY);
+
+                  //Margini acoperire
+                  Brush.Color := rgb(224, 224, 224);
+                  Polygon([Point(300,375), Point(220,375), Point(220,400), Point(300,400)]);
 
                   //Ansamblu superior
                   //Suprafata frontala
@@ -747,10 +782,6 @@ implementation
                   brush.color := rgb(204, 102, 0);
                   polygon([point(xp1_1, yp1_1), point(xp2_1, yp2_1), point(xp2_2, yp2_2), point(xp1_2, yp1_2)]);
 
-                  //"Deget 2"
-                  brush.color := rgb(204, 102, 0);
-                  polygon([point(xp1_4, yp1_4), point(xp3_1, yp3_1), point(xp3_2, yp3_2), point(xp1_5, yp1_5)]);
-
 
                   {Podea - Decor}
                   Brush.Color := rgb(0, 51, 102);
@@ -764,7 +795,7 @@ implementation
                       movBanda1 := movBanda1 + 1;
                       movSticleGoale := movSticleGoale + 1;
                       tBanda1 := tBanda1 + 1;
-                      if tBanda1 = 200 then
+                      if tBanda1 = 300 then
                         etapa := 1;
                     end;
 
@@ -845,15 +876,16 @@ implementation
                     //Ambalare - asteptare
                    10:begin
                       tAsteptareAmbalare := tAsteptareAmbalare + 1;
-                      if tAsteptareAmbalare = 50 then
+                      if tAsteptareAmbalare = 70 then
                         etapa := 11;
                     end;
 
                     //Miscare banda 4
                     11:begin
                       movBanda4 := movBanda4 + 1;
+                      movCutieX := movCutieX + 1;
                       tBanda4 := tBanda4 + 1;
-                      if tBanda4 = 200 then
+                      if tBanda4 = 278 then
                         etapa := 12;
                     end;
 
@@ -880,6 +912,8 @@ implementation
                       movArticulatieDoiR1 := movArticulatieDoiR1 - 1;
                       movArticulatieTreiR1 := movArticulatieTreiR1 - 1;
                       movArticulatiePrehensorR1 := movArticulatiePrehensorR1 - 1;
+                      if (movArticulatieTreiR1 < 46) then
+                        movCutieY := movCutieY + 1;
                       if (movArticulatieTreiR1 = 0) then
                         etapa := 15;
                     end;
@@ -887,16 +921,27 @@ implementation
                     //Inchidere prehensor
                     15:begin
                       movArtivulatieClemePR1 := movArtivulatieClemePR1 + 1;
+
+                      polygon([point(xp1_4, yp1_4), point(xp3_1, yp3_1), point(xp3_2, yp3_2), point(xp1_5, yp1_5)]);
                       if (movArtivulatieClemePR1 > 0) then
                         etapa := 16;
                     end;
 
                     //Miscare banda 5 + revenire etapa 0
                     16:begin
-                      movBanda5 := movBanda5 + 1;
+                      movCutieInchisaX := movCutieInchisaX + 1;
                       tBanda5 := tBanda5 + 1;
-                      if tBanda5 = 200 then
+                      movBanda5 := movBanda5 + 1;
+
+                      if tBanda5 = 220 then
+                      begin
+                        culoareScotchR := 153;
+                        culoareScotchG := 153;
+                        culoareScotchB := 0;
+                      end;
+                      if tBanda5 = 500 then
                         etapa := 17;
+
                     end;
 
                     17:begin
@@ -930,6 +975,12 @@ implementation
                       movSticleGoale := 0;
                       movSticlePline := 0;
                       movSticleDop := 0;
+                      movCutieX := 0;
+                      movCutieY := 0;
+                      movCutieInchisaX := 0;
+                      culoareScotchR := 153;
+                      culoareScotchG := 76;
+                      culoareScotchB := 0;
                       etapa := 0;
                     end;
 
