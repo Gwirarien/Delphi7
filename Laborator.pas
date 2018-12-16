@@ -66,6 +66,22 @@ var
   culoareScotchG : integer = 76;
   culoareScotchB : integer = 0;
 
+  //Led-uri
+  culoareLedDepozitR : integer = 255;
+  culoareLedDepozitG : integer = 0;
+  culoareLedDepozitB : integer = 0;
+  culoareLedUmplereR : integer = 255;
+  culoareLedUmplereG : integer = 0;
+  culoareLedUmplereB : integer = 0;
+  culoareLedDopuriR : integer = 255;
+  culoareLedDopuriG : integer = 0;
+  culoareLedDopuriB : integer = 0;
+  culoareLedAmbalareR : integer = 255;
+  culoareLedAmbalareG : integer = 0;
+  culoareLedAmbalareB : integer = 0;
+  movStatusUmplereX : integer = 0;
+  movStatusAmbalareY : integer = 0;
+
 const
   r1 = 18;
   rp = 10;
@@ -239,8 +255,25 @@ implementation
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(200,340), Point(200,160), Point(210,150), Point(210,330)]);
 
-
-
+                  //Panou comanda
+                  //Cadru
+                  Brush.Color := rgb(0, 204, 204);
+                  RoundRect(30, 270, 190, 330, 10, 10);
+                  //Afisaj
+                  Brush.Color := rgb(255, 255, 255);
+                  Polygon([Point(50,275), Point(80,275), Point(80,320), Point(50,320)]);
+                  //LCD
+                  Brush.Color := rgb(0, 25, 51);
+                  Polygon([Point(52,280), Point(78,280), Point(78,310), Point(52,310)]);
+                  //Butoane
+                  Brush.Color := rgb(153, 153, 0);
+                  ellipse(90, 280, 100, 290);
+                  ellipse(110, 280, 120, 290);
+                  ellipse(130, 280, 140, 290);
+                  ellipse(150, 280, 160, 290);
+                  //Led functionare
+                  Brush.Color := rgb(culoareLedDepozitR, culoareLedDepozitG, culoareLedDepozitB);
+                  ellipse(165, 305, 180, 320);
 
                   {Statie umplere}
                   //Suprafata frontala
@@ -418,6 +451,26 @@ implementation
                   Polygon([Point(400,160), Point(400,120), Point(650,120), Point(650,160)]);
                   Polygon([Point(400,340), Point(400,260), Point(650,260), Point(650,340)]);
 
+                  //Panou comanda
+                  //Cadru
+                  Brush.Color := rgb(65, 123, 132);
+                  RoundRect(410, 270, 450, 330, 10, 10);
+                  RoundRect(500, 280, 600, 320, 10, 10);
+                  //Afisaj
+                  Brush.Color := rgb(255, 255, 255);
+                  Polygon([Point(510,310), Point(510,290), Point(590,290), Point(590,310)]);
+                  //Status bar
+                  Brush.Color := rgb(0, 0, 204);
+                  Polygon([Point(510,310), Point(510,290), Point(510 + movStatusUmplereX,290), Point(510 + movStatusUmplereX,310)]);
+                  //Butoane
+                  Brush.Color := rgb(51, 255, 153);
+                  ellipse(425, 280, 435, 290);
+                  Brush.Color := rgb(255, 0, 0);
+                  ellipse(425, 310, 435, 320);
+                  //Led functionare
+                  Brush.Color := rgb(culoareLedUmplereR, culoareLedUmplereG, culoareLedUmplereB);
+                  ellipse(625, 325, 610, 310);
+
 
                   {Statie dopuri}
                   //Suprafata frontala
@@ -546,6 +599,9 @@ implementation
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(1100,340), Point(1100,240), Point(1160,180), Point(1160,280)]);
 
+                  //Led functionare
+                  Brush.Color := rgb(culoareLedDopuriR, culoareLedDopuriG, culoareLedDopuriB);
+                  ellipse(1020, 255, 1040, 275);
 
                   {Statie etichetare}
 
@@ -654,6 +710,7 @@ implementation
                   {Cutie cu bidoane}
                   Brush.Color := rgb(153, 76, 0);
                   Polygon([Point(750 - movCutieX - movCutieInchisaX,493 - movCutieY), Point(750 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,493 - movCutieY)]);
+                  Brush.Color := rgb(102, 51, 0);
                   Polygon([Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,493 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,483 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,443 - movCutieY)]);
                   Brush.Color := rgb(culoareScotchR,culoareScotchG,culoareScotchB);
                   Polygon([Point(750 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(780 - movCutieX - movCutieInchisaX,450 - movCutieY), Point(790 - movCutieX - movCutieInchisaX,443 - movCutieY), Point(760 - movCutieX - movCutieInchisaX,443 - movCutieY)]);
@@ -677,6 +734,24 @@ implementation
                   Brush.Color := rgb(160, 160, 160);
                   Polygon([Point(900,410), Point(880,430), Point(880,500), Point(900,480)]);
 
+                  //Panou comanda
+                  //Cadru
+                  Brush.Color := rgb(204, 204, 255);
+                  RoundRect(760, 440, 870, 490, 10, 10);
+                  //Afisaj
+                  Brush.Color := rgb(255, 255, 255);
+                  Polygon([Point(765,445), Point(790,445), Point(790,485), Point(765,485)]);
+                  //Status bar
+                  Brush.Color := rgb(0, 25, 51);
+                  Polygon([Point(765,485 - movStatusAmbalareY), Point(790,485 - movStatusAmbalareY), Point(790,485), Point(765,485)]);
+                  //Butoane
+                  Brush.Color := rgb(153, 153, 0);
+                  ellipse(800, 450, 810, 460);
+                  ellipse(820, 450, 830, 460);
+                  ellipse(840, 450, 850, 460);
+                  //Led functionare
+                  Brush.Color := rgb(culoareLedAmbalareR, culoareLedAmbalareG, culoareLedAmbalareB);
+                  ellipse(895, 525, 910, 540);
 
                   {Modelare brat robotic R1}
                   //Baza
@@ -795,6 +870,9 @@ implementation
                       movBanda1 := movBanda1 + 1;
                       movSticleGoale := movSticleGoale + 1;
                       tBanda1 := tBanda1 + 1;
+                      culoareLedDepozitR := 0;
+                      culoareLedDepozitG := 255;
+                      culoareLedDepozitB := 0;
                       if tBanda1 = 300 then
                         etapa := 1;
                     end;
@@ -803,6 +881,12 @@ implementation
                     1:begin
                       movRobotUmplere := movRobotUmplere + 1;
                       tCoborareUmplere := tCoborareUmplere + 1;
+                      culoareLedDepozitR := 255;
+                      culoareLedDepozitG := 0;
+                      culoareLedDepozitB := 0;
+                      culoareLedUmplereR := 0;
+                      culoareLedUmplereG := 255;
+                      culoareLedUmplereB := 0;
                       if tCoborareUmplere = 30 then
                         etapa := 2;
                     end;
@@ -810,7 +894,9 @@ implementation
                     //Asteptare umplere
                     2:begin
                       tAsteptareUmplere := tAsteptareUmplere + 1;
-                      if tAsteptareUmplere = 50 then
+                      if tAsteptareUmplere < 81 then
+                        movStatusUmplereX :=  movStatusUmplereX + 1;
+                      if tAsteptareUmplere = 100 then
                         etapa := 3;
                     end;
 
@@ -818,7 +904,9 @@ implementation
                     3:begin
                       movRobotUmplere := movRobotUmplere - 1;
                       tRidicareUmplere := tRidicareUmplere + 1;
-                      if tRidicareUmplere = 30 then
+                      if tRidicareUmplere < 41 then
+                        movStatusUmplereX :=  movStatusUmplereX - 1;
+                      if tRidicareUmplere = 45 then
                         etapa := 4;
                     end;
 
@@ -827,6 +915,11 @@ implementation
                       movBanda2 := movBanda2 + 1;
                       movSticlePline := movSticlePline + 1;
                       tBanda2 := tBanda2 + 1;
+                      culoareLedUmplereR := 255;
+                      culoareLedUmplereG := 0;
+                      culoareLedUmplereB := 0;
+                      if tBanda2 < 41 then
+                        movStatusUmplereX :=  movStatusUmplereX - 1;
                       if tBanda2 = 500 then
                           etapa := 5;
                     end;
@@ -835,6 +928,9 @@ implementation
                     5:begin
                       movRobotInchidereY := movRobotInchidereY + 1;
                       tCoborareInchidere := tCoborareInchidere + 1;
+                      culoareLedDopuriR := 0;
+                      culoareLedDopuriG := 255;
+                      culoareLedDopuriB := 0;
                       if tCoborareInchidere = 40 then
                           etapa := 6;
                     end;
@@ -869,6 +965,9 @@ implementation
                       movBanda3 := movBanda3 + 1;
                       movSticleDop := movSticleDop + 1;
                       tBanda3 := tBanda3 + 1;
+                      culoareLedDopuriR := 255;
+                      culoareLedDopuriG := 0;
+                      culoareLedDopuriB := 0;
                       if tBanda3 = 250 then
                         etapa := 10;
                     end;
@@ -876,7 +975,12 @@ implementation
                     //Ambalare - asteptare
                    10:begin
                       tAsteptareAmbalare := tAsteptareAmbalare + 1;
-                      if tAsteptareAmbalare = 70 then
+                      culoareLedAmbalareR := 0;
+                      culoareLedAmbalareG := 255;
+                      culoareLedAmbalareB := 0;
+                      if tAsteptareAmbalare < 41 then
+                        movStatusAmbalareY := movStatusAmbalareY + 1;
+                      if tAsteptareAmbalare = 100 then
                         etapa := 11;
                     end;
 
@@ -885,6 +989,11 @@ implementation
                       movBanda4 := movBanda4 + 1;
                       movCutieX := movCutieX + 1;
                       tBanda4 := tBanda4 + 1;
+                      culoareLedAmbalareR := 255;
+                      culoareLedAmbalareG := 0;
+                      culoareLedAmbalareB := 0;
+                      if tBanda4 < 41 then
+                        movStatusAmbalareY := movStatusAmbalareY - 1;;
                       if tBanda4 = 278 then
                         etapa := 12;
                     end;
@@ -935,9 +1044,9 @@ implementation
 
                       if tBanda5 = 220 then
                       begin
-                        culoareScotchR := 153;
-                        culoareScotchG := 153;
-                        culoareScotchB := 0;
+                        culoareScotchR := 80;
+                        culoareScotchG := 50;
+                        culoareScotchB := 21;
                       end;
                       if tBanda5 = 500 then
                         etapa := 17;
@@ -981,6 +1090,7 @@ implementation
                       culoareScotchR := 153;
                       culoareScotchG := 76;
                       culoareScotchB := 0;
+                      movStatusAmbalareY := 0;
                       etapa := 0;
                     end;
 
